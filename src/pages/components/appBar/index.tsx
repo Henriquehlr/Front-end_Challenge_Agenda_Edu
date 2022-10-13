@@ -8,6 +8,8 @@ import Typography from "@mui/material/Typography";
 import InputBase from "@mui/material/InputBase";
 import MenuIcon from "@mui/icons-material/Menu";
 import SearchIcon from "@mui/icons-material/Search";
+import { getSearchMovie } from "../../redux/redurces/popularFurniture/popularMoviesThunks";
+import { useDispatch } from "react-redux";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -52,6 +54,12 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 export default function SearchAppBar() {
+  const [search, setSearch] = React.useState<string>("");
+  const dispatch = useDispatch();
+  React.useEffect(() => {
+    getSearchMovie(dispatch, search);
+  }, [search]);
+
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
@@ -71,15 +79,18 @@ export default function SearchAppBar() {
             component="div"
             sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
           >
-            MUI
+            The MovieDb
           </Typography>
           <Search>
             <SearchIconWrapper>
               <SearchIcon />
             </SearchIconWrapper>
             <StyledInputBase
-              placeholder="Search…"
+              placeholder="Buscar…"
               inputProps={{ "aria-label": "search" }}
+              onChange={(el) => {
+                setSearch(el.target.value);
+              }}
             />
           </Search>
         </Toolbar>

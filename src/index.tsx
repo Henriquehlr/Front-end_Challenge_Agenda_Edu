@@ -2,8 +2,8 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-
-import Home from "./pages/Main";
+import GlobalStyle from "./global";
+import Home from "./pages/main";
 import configureStore from "./pages/redux/redurces/store/configureStore";
 
 const store = configureStore();
@@ -17,6 +17,7 @@ ReactDOM.render(
         </Routes>
       </Router>
     </Provider>
+    <GlobalStyle />
   </React.StrictMode>,
   document.getElementById("root")
 );
