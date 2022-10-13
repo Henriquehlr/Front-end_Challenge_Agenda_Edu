@@ -56,6 +56,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 export default function SearchAppBar() {
   const [search, setSearch] = React.useState<string>("");
   const dispatch = useDispatch();
+
   React.useEffect(() => {
     getSearchMovie(dispatch, search);
   }, [search]);

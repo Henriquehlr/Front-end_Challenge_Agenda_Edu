@@ -10,6 +10,7 @@ export const loadPoularMoviesAsync = (dispatch: any, page: number) => {
       `movie/popular?api_key=${process.env.REACT_APP_API_KEY}&language=pt-BR&page=${page}`
     )
     .then((response: any) => {
+      dispatch(actions.popularMoviesStart());
       dispatch(actions.popularMoviesSucess(response.data));
     })
     .catch((error: string) => dispatch(actions.popularMoviesError(error)));

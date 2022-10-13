@@ -29,9 +29,7 @@ export const BoxItem = styled(Box)`
   flex-direction: row;
   display: flex;
   justify-content: space-between;
-  overflow-x: scroll;
   white-space: nowrap;
   margin: 8px;
-
   text-align: "justify";
 `;
